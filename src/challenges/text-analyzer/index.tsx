@@ -1,5 +1,12 @@
+import TextAnalyzerContainer from "./components/container/TextAnalyzerContainer";
+import Layout from "./layout/layout";
+
 const TextAnalyzer = () => {
-  return <div>Analizador de texto</div>;
+  return (
+    <Layout>
+      <TextAnalyzerContainer />
+    </Layout>
+  );
 };
 
 export default TextAnalyzer;
