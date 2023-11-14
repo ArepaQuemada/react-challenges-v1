@@ -17,14 +17,43 @@ export class TextManager {
   }
 
   getParagraphsQuantity(): string {
-    return this.text.split("\n").length.toString();
+    return this.text
+      .split("\n")
+      .filter((item) => item !== "")
+      .length.toString();
   }
 
   getPronounsQuantity(): string {
-    return (
-      this.text
-        .match(/(he|she|it|they|them|her|him|his)/gi)
-        ?.length?.toString() ?? "0"
-    );
+    const pronouns = [
+      "i",
+      "we",
+      "you",
+      "he",
+      "she",
+      "it",
+      "they",
+      "me",
+      "us",
+      "her",
+      "him",
+      "them",
+      "mine",
+      "ours",
+      "yours",
+      "hers",
+      "his",
+      "theirs",
+      "myself",
+      "yourself",
+      "herself",
+      "himself",
+      "itself",
+      "ourselves",
+      "yourselves",
+      "themselves",
+    ];
+    const regex = new RegExp(`\\b(${pronouns.join("|")})\\b`, "gi");
+    const matches = this.text.match(regex);
+    return matches ? matches.length.toString() : "0";
   }
 }
